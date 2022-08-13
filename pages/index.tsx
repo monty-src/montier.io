@@ -18,6 +18,7 @@ const Home: NextPage = () => {
         <ul className="dd-menu">
           <li>Posts</li>
           <li>About</li>
+          <li>Book Reviews</li>
           <li className="divider"></li>
           <li>
             <a href="#">Feed</a>
@@ -32,7 +33,7 @@ const Home: NextPage = () => {
 
         <div className="window-pane">
           <h4 style={{ textAlign: "center" }}>
-          Orci varius natoque penatibus et magnis dis parturient montes
+            Orci varius natoque penatibus et magnis dis parturient montes
           </h4>
         </div>
       </div>
@@ -95,21 +96,41 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className="window">
-        <div className="title-bar">
-          <h1 className="title">Post</h1>
+      <div style={{ display: "flex" }}>
+        <div className="window" style={{ width: "50%" }}>
+          <div className="title-bar">
+            <h1 className="title">Post</h1>
+          </div>
+          <div className="separator"></div>
+          <div className="window-pane">
+            <ul>
+              <li>
+                <a href="#">Typescript</a>
+              </li>
+              <li>
+                <a href="#">R.I.P Localhost</a>
+              </li>
+              <li>
+                <a href="#">Interview Questions</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="separator"></div>
-
-        <div className="window-pane">
-          <ul>
-            <li>
-              <a href="#">Typescript</a>
-            </li>
-            <li>
-              <a href="#">R.I.P Localhost</a>
-            </li>
-          </ul>
+        <div className="window" style={{ width: "50%" }}>
+          <div className="title-bar">
+            <h1 className="title">Builds</h1>
+          </div>
+          <div className="separator"></div>
+          <div className="window-pane">
+            <ul>
+              <li>
+                <a href="#">WhatsApp</a>
+              </li>
+              <li>
+                <a href="#">Hulu-Overview</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
