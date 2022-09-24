@@ -15,7 +15,7 @@ const PreviewPosts = () => {
       <TitleBar text="Posts" />
       <Separator />
       <WindowPane>
-        <UnOrderedList style={{ listStyle: "none", margin: "0 0 15px 0", padding: 0, }}>
+        <UnOrderedList>
           <ListItemContent>
             <AlignTextBoth theme="outline" size="20" fill="#333" />{" "}
             <a href="">
@@ -59,7 +59,7 @@ const PreviewPosts = () => {
 };
 
 const UnOrderedList = styled.ul`
-  margin: 0;
+  margin: 0 0 15px 0;
   padding: 0;
   font-size: 14px;
   list-style: none;
