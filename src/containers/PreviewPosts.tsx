@@ -17,31 +17,31 @@ const PreviewPosts = () => {
       <WindowPane>
         <UnOrderedList style={{ listStyle: "none", margin: "0 0 15px 0", padding: 0, }}>
           <ListItemContent>
-            <AlignTextBoth theme="outline" size="24" fill="#333" />{" "}
+            <AlignTextBoth theme="outline" size="20" fill="#333" />{" "}
             <a href="">
               <span>Post: </span>Working with Typescript
             </a>
           </ListItemContent>
           <ListItemContent>
-            <AlignTextBoth theme="outline" size="24" fill="#333" />{" "}
+            <AlignTextBoth theme="outline" size="20" fill="#333" />{" "}
             <a href="">
               <span>Post: </span>Redux Toolkit Different
             </a>
           </ListItemContent>
           <ListItemContent>
-            <AlignTextBoth theme="outline" size="24" fill="#333" />{" "}
+            <AlignTextBoth theme="outline" size="20" fill="#333" />{" "}
             <a href="">
               <span>Post: </span>AWS Codepipeline static site
             </a>
           </ListItemContent>
           <ListItemContent>
-            <NotebookAndPen theme="outline" size="24" fill="#333" />{" "}
+            <NotebookAndPen theme="outline" size="20" fill="#333" />{" "}
             <a href="">
               <span>Review: </span>Abstraction the key to copmuting
             </a>
           </ListItemContent>
           <ListItemContent>
-            <Formula theme="outline" size="24" fill="#333" />{" "}
+            <Formula theme="outline" size="20" fill="#333" />{" "}
             <a href="">
               <span>Math: </span>Polynomials
             </a>
@@ -61,14 +61,17 @@ const PreviewPosts = () => {
 const UnOrderedList = styled.ul`
   margin: 0;
   padding: 0;
+  font-size: 14px;
   list-style: none;
 `;
 
 const ListItemContent = styled.li`
-  display: flex;
   column-gap: 10px;
   margin-top: 10px;
   line-height: 1.4;
+
+  display: flex;
+  align-items: center;
 `;
 
 const MoreContent = styled(ListItemContent)`

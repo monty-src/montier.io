@@ -18,32 +18,32 @@ const Social = () => {
       <WindowPane>
         <UnOrderedList>
           <ListItemContent>
-            <City theme="outline" size="24" fill="#333" /> Charlotte, North
+            <City theme="outline" size="20" fill="#333" /> Charlotte, North
             Carolina
           </ListItemContent>
           <ListItemContent>
-            <Github theme="outline" size="24" fill="#333" />{" "}
+            <Github theme="outline" size="20" fill="#333" />{" "}
             <a target="_blank" href="https://github.com/monty-src/">
               {" "}
-              @monty-src
+              monty-src
             </a>
           </ListItemContent>
           <ListItemContent>
-            <Twitter theme="outline" size="24" fill="#333" />{" "}
+            <Twitter theme="outline" size="20" fill="#333" />{" "}
             <a target="_blank" href="https://twitter.com/monty_sdk">
-              @monty_sdk
+              monty_sdk
             </a>
           </ListItemContent>
           <ListItemContent>
-            <Instagram theme="outline" size="24" fill="#333" />{" "}
+            <Instagram theme="outline" size="20" fill="#333" />{" "}
             <a target="_blank" href="http://instagram.com/montier_elliott">
-              @montier_elliott
+              montier_elliott
             </a>
           </ListItemContent>
           <ListItemContent>
-            <AcceptEmail theme="outline" size="24" fill="#333" />{" "}
+            <AcceptEmail theme="outline" size="20" fill="#333" />{" "}
             <a target="_blank" href="mailto:montier@blackinfrastructure.com">
-              @montier@blackinfrastructure.com
+              montier@blackinfrastructure.com
             </a>
           </ListItemContent>
         </UnOrderedList>
@@ -55,14 +55,17 @@ const Social = () => {
 const UnOrderedList = styled.ul`
   margin: 0;
   padding: 0;
+  font-size: 14px;
   list-style: none;
 `;
 
 const ListItemContent = styled.li`
-  display: flex;
   column-gap: 10px;
   margin-top: 10px;
   line-height: 1.4;
+
+  display: flex;
+  align-items: center;
 `;
 
 export default Social;
