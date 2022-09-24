@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import type { Post, Posts } from "../posts";
 
-export const HomeApi = createApi({
+export const homeApi = createApi({
   reducerPath: "home",
   keepUnusedDataFor: 8,
   baseQuery: fetchBaseQuery({ baseUrl: process.env.API_BASE_URL }),
@@ -20,4 +20,4 @@ export const HomeApi = createApi({
   }),
 });
 
-export const { useGetHomeQuery } = HomeApi;
+export const { useGetHomeQuery } = homeApi;
