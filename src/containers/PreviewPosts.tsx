@@ -3,6 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import { AlignTextBoth, NotebookAndPen, Formula } from "@icon-park/react";
 
+import { UnOrderedList, ListItemContent } from "../styles/basics";
+
 import TitleBar from "../components/system.css/TitleBar";
 import Separator from "../components/system.css/Separator";
 import WindowPane from "../components/system.css/WindowPane";
@@ -47,9 +49,7 @@ const PreviewPosts = () => {
             </a>
           </ListItemContent>
           <MoreContent>
-            <a href="">
-              More Posts
-            </a>
+            <a href="">More Posts</a>
           </MoreContent>
         </UnOrderedList>
         {/* <AnimateLoadingPosts /> */}
@@ -57,22 +57,6 @@ const PreviewPosts = () => {
     </AnimateFadeInDown>
   );
 };
-
-const UnOrderedList = styled.ul`
-  margin: 0 0 15px 0;
-  padding: 0;
-  font-size: 14px;
-  list-style: none;
-`;
-
-const ListItemContent = styled.li`
-  column-gap: 10px;
-  margin-top: 10px;
-  line-height: 1.4;
-
-  display: flex;
-  align-items: center;
-`;
 
 const MoreContent = styled(ListItemContent)`
   margin-top: 25px;

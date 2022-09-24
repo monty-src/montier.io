@@ -7,7 +7,8 @@ import {
   Twitter,
   AcceptEmail,
 } from "@icon-park/react";
-import styled from "styled-components";
+
+import { UnOrderedList, ListItemContent } from "../styles/basics";
 
 import WindowPane from "../components/system.css/WindowPane";
 import AnimateFadeInDown from "../../src/components/animation/AnimateFadeInDown";
@@ -51,21 +52,5 @@ const Social = () => {
     </AnimateFadeInDown>
   );
 };
-
-const UnOrderedList = styled.ul`
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  list-style: none;
-`;
-
-const ListItemContent = styled.li`
-  column-gap: 10px;
-  margin-top: 10px;
-  line-height: 1.4;
-
-  display: flex;
-  align-items: center;
-`;
 
 export default Social;
