@@ -26,7 +26,10 @@ export const store = () => configureStore({
       .concat(serializableMiddleware, postsApi.middleware, homeApi.middleware),
 });
 
+const makeStore = store();
+
 export type RootStore = ReturnType<typeof store>;
+export type Dispatch = typeof makeStore.dispatch;
 export type RootState = ReturnType<RootStore["getState"]>;
 export type AppDispatch = ReturnType<RootStore["dispatch"]>;
 

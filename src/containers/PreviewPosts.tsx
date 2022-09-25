@@ -11,43 +11,37 @@ import WindowPane from "../components/system.css/WindowPane";
 import AnimateLoadingPosts from "../components/animation/AnimateLoadingPosts";
 import AnimateFadeInDown from "../../src/components/animation/AnimateFadeInDown";
 
-const PreviewPosts = () => {
+interface Post {
+  id: number;
+  attributes: {
+    slug: string;
+    body: string;
+    title: string;
+    post_type: string;
+    updatedAt: string;
+    createdAt: string;
+    publicedAt: string;
+  };
+}
+
+interface Props {
+  posts: Post[];
+}
+
+const PreviewPosts = ({ posts }: Props) => {
   return (
     <AnimateFadeInDown delay={2}>
       <TitleBar text="Posts" />
       <Separator />
       <WindowPane>
         <UnOrderedList>
-          <ListItemContent>
-            <AlignTextBoth theme="outline" size="20" fill="#333" />{" "}
-            <a href="">
-              <span>Post: </span>Working with Typescript
-            </a>
-          </ListItemContent>
-          <ListItemContent>
-            <AlignTextBoth theme="outline" size="20" fill="#333" />{" "}
-            <a href="">
-              <span>Post: </span>Redux Toolkit Different
-            </a>
-          </ListItemContent>
-          <ListItemContent>
-            <AlignTextBoth theme="outline" size="20" fill="#333" />{" "}
-            <a href="">
-              <span>Post: </span>AWS Codepipeline static site
-            </a>
-          </ListItemContent>
-          <ListItemContent>
-            <NotebookAndPen theme="outline" size="20" fill="#333" />{" "}
-            <a href="">
-              <span>Review: </span>Abstraction the key to copmuting
-            </a>
-          </ListItemContent>
-          <ListItemContent>
-            <Formula theme="outline" size="20" fill="#333" />{" "}
-            <a href="">
-              <span>Math: </span>Polynomials
-            </a>
-          </ListItemContent>
+          {posts.map(({ attributes }, idx) => (
+            <ListItemContent key={idx}>
+              <a href="">
+                <span>Post: </span> {attributes.title}
+              </a>
+            </ListItemContent>
+          ))}
           <MoreContent>
             <a href="">More Posts</a>
           </MoreContent>

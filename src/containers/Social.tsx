@@ -34,20 +34,20 @@ const Social = ({ city, contact }: Props) => {
           </ListItemContent>
           <ListItemContent>
             <Github theme="outline" size="20" fill="#333" />{" "}
-            <a target="_blank" href={`https://github.com/${contact.github}/`}>
+            <a target="_blank" rel="noreferrer" href={`https://github.com/${contact.github}/`}>
               {contact.github}
             </a>
           </ListItemContent>
           <ListItemContent>
             <Twitter theme="outline" size="20" fill="#333" />{" "}
-            <a target="_blank" href={`https://twitter.com/${contact.twitter}`}>
+            <a target="_blank" rel="noreferrer" href={`https://twitter.com/${contact.twitter}`}>
               {contact.twitter}
             </a>
           </ListItemContent>
           <ListItemContent>
             <Instagram theme="outline" size="20" fill="#333" />{" "}
             <a
-              target="_blank"
+              target="_blank" rel="noreferrer" 
               href={`http://instagram.com/${contact.instagram}`}
             >
               {contact.instagram}
@@ -55,7 +55,7 @@ const Social = ({ city, contact }: Props) => {
           </ListItemContent>
           <ListItemContent>
             <AcceptEmail theme="outline" size="20" fill="#333" />{" "}
-            <a target="_blank" href={`mailto:${contact.email}`}>
+            <a target="_blank" rel="noreferrer" href={`mailto:${contact.email}`}>
               {contact.email}
             </a>
           </ListItemContent>

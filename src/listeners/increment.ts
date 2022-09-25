@@ -1,9 +1,12 @@
 import { something } from "../services/posts";
 import type { Action, ListenerEffectAPI } from "@reduxjs/toolkit";
 
-import type { RootState, AppDispatch } from "../store";
+import { store } from "../store";
+import type { RootState, Dispatch } from "../store";
+
+const makeStore = store();
 
 export const incrementListener = {
   actionCreator: something,
-  effect: (action: Action, listenerApi: ListenerEffectAPI<RootState, AppDispatch>) => {},
+  effect: (action: Action, listenerApi: ListenerEffectAPI<RootState, Dispatch>) => {},
 };

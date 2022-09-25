@@ -18,11 +18,8 @@ const Home: NextPage = (props: any) => {
         quote={props.attributes.quote}
         quote_author={props.attributes.quote_author}
       />
-      <Social 
-        city={props.attributes.city} 
-        contact={props.attributes.contact} 
-      />
-      <PreviewPosts />
+      <Social city={props.attributes.city} contact={props.attributes.contact} />
+      <PreviewPosts posts={props.posts} />
     </>
   );
 };
@@ -30,13 +27,22 @@ const Home: NextPage = (props: any) => {
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ params }) => {
-      const response = await axios.get(`${process.env.API_BASE_URL}home`, {
+      const responsePosts = await axios.get(`${process.env.API_BASE_URL}posts`);
+      const responseHome = await axios.get(`${process.env.API_BASE_URL}home`, {
         params: {
           populate: "*",
         },
       });
-      const { data } = response?.data;
-      return { props: data };
+
+      const { data: homeData } = responseHome?.data;
+      const { data: postsData } = responsePosts?.data;
+
+      return {
+        props: {
+          ...homeData,
+          posts: postsData,
+        },
+      };
     }
 );
 
