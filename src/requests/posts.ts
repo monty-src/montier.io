@@ -1,4 +1,4 @@
-import { HYDRATE } from 'next-redux-wrapper';
+import { HYDRATE } from "next-redux-wrapper";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import type { Post, Posts } from "../posts";
@@ -10,7 +10,7 @@ export const postsApi = createApi({
   tagTypes: ["Posts"],
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
-      return action.payload[reducerPath]
+      return action.payload[reducerPath];
     }
   },
   endpoints: (builder) => ({
@@ -18,9 +18,26 @@ export const postsApi = createApi({
       query: (id) => `posts/${id}`,
       transformResponse: (response: { data: Post }) => response.data,
     }),
-    getPosts: builder.query<Posts, void>({
-      query: () => `posts`,
-      transformResponse: (response: { data: Posts }) => response.data,
+    getPosts: builder.query<
+      Posts,
+      {
+        page: number;
+        pageSize: number;
+      }
+    >({
+      query: ({ page, pageSize }) => {
+        return {
+          url: `posts/`,
+          params: {
+            ["pagination[page]"]: page,
+            ["pagination[pageSize]"]: pageSize,
+          },
+        };
+      },
+      transformResponse: (response: { data: Posts }) => {
+        console.log("response: ", response);
+        return response.data;
+      },
     }),
   }),
 });

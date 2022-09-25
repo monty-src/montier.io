@@ -5,6 +5,8 @@ import { AlignTextBoth, NotebookAndPen, Formula } from "@icon-park/react";
 
 import { UnOrderedList, ListItemContent } from "../styles/basics";
 
+import { useGetPostsQuery } from "../requests/posts";
+
 import TitleBar from "../components/system.css/TitleBar";
 import Separator from "../components/system.css/Separator";
 import WindowPane from "../components/system.css/WindowPane";
@@ -29,6 +31,14 @@ interface Props {
 }
 
 const PreviewPosts = ({ posts }: Props) => {
+  const { data, isLoading } = useGetPostsQuery({
+    page: 1,
+    pageSize: 1
+  });
+  
+  console.log('data: ', data);
+  console.log('isLoading: ', isLoading);
+
   return (
     <AnimateFadeInDown delay={2}>
       <TitleBar text="Posts" />
