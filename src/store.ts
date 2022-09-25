@@ -1,5 +1,6 @@
 import { createLogger } from "redux-logger";
 import { configureStore } from "@reduxjs/toolkit";
+import { createWrapper } from "next-redux-wrapper";
 
 import { listener } from "./middlewares/listener";
 import { serializableMiddleware } from "./middlewares/serializable";
@@ -11,7 +12,7 @@ export const logger = createLogger({
   collapsed: true,
 });
 
-export const store = configureStore({
+export const store = () => configureStore({
   devTools: process.env.NODE_ENV !== "production",
 
   reducer: {
@@ -22,8 +23,11 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .prepend(listener.middleware)
-      .concat(logger, serializableMiddleware, postsApi.middleware, homeApi.middleware),
+      .concat(serializableMiddleware, postsApi.middleware, homeApi.middleware),
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type RootStore = ReturnType<typeof store>;
+export type RootState = ReturnType<RootStore["getState"]>;
+export type AppDispatch = ReturnType<RootStore["dispatch"]>;
+
+export const wrapper = createWrapper<RootStore>(store);
