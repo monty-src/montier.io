@@ -1,3 +1,10 @@
+/**
+ * pages/index
+ *
+ *
+ * @file pages/index
+ * @author montier@blackinfrastructure.com
+ */
 import React from "react";
 import axios from "axios";
 import type { NextPage } from "next";
@@ -10,6 +17,13 @@ import PreviewPosts from "../src/containers/PreviewPosts";
 
 import "animate.css";
 
+/**
+ * Home Component
+ *
+ *
+ * @param props
+ * @returns {}
+ */
 const Home: NextPage = (props: any) => {
   return (
     <>
@@ -27,7 +41,15 @@ const Home: NextPage = (props: any) => {
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ params }) => {
-      const responsePosts = await axios.get(`${process.env.API_BASE_URL}posts`);
+      const responsePosts = await axios.get(
+        `${process.env.API_BASE_URL}posts`,
+        {
+          params: {
+            ["pagination[page]"]: 1,
+            ["pagination[pageSize]"]: 3,
+          },
+        }
+      );
       const responseHome = await axios.get(`${process.env.API_BASE_URL}home`, {
         params: {
           populate: "*",

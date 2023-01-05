@@ -34,10 +34,10 @@ export const postsApi = createApi({
           },
         };
       },
-      transformResponse: (response: { data: Posts }) => {
-        console.log("response: ", response);
-        return response.data;
-      },
+      transformResponse: (response: { data: Posts, meta: any }) => ({
+        posts: response.data,
+        meta: response.meta
+      }),
     }),
   }),
 });

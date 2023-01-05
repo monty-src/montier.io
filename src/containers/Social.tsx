@@ -1,3 +1,10 @@
+/**
+ * containers/Social
+ *
+ *
+ * @file containers/Social
+ * @author montier@blackinfrastructure.com
+ */
 import React from "react";
 
 import {
@@ -6,6 +13,7 @@ import {
   Instagram,
   Twitter,
   AcceptEmail,
+  DocumentFolder,
 } from "@icon-park/react";
 
 import { UnOrderedList, ListItemContent } from "../styles/basics";
@@ -24,6 +32,13 @@ interface Props {
   };
 }
 
+/**
+ * Social Component
+ * 
+ * 
+ * @param param
+ * @returns 
+ */
 const Social = ({ city, contact }: Props) => {
   return (
     <AnimateFadeInDown delay={1}>

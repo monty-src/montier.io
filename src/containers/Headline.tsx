@@ -17,15 +17,17 @@ const HeadlineContainer = ({ title, quote, quote_author }: Props) => {
     <AnimateFadeInDown>
       <TitleBar text={title} />
       <Seperator />
-      <Pane>
-        <h4>{quote}</h4>
-        <p>{quote_author}</p>
-      </Pane>
+      <WindowPane>
+        <Container>
+          <h4>{quote}</h4>
+          <p>{quote_author}</p>
+        </Container>
+      </WindowPane>
     </AnimateFadeInDown>
   );
 };
 
-const Pane = styled(WindowPane)`
+const Container = styled("section")`
   text-align: center;
 `;
 
