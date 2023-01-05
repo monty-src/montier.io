@@ -55,7 +55,7 @@ const PreviewPosts = ({ posts }: Props) => {
   console.log(data);
 
   return (
-    <AnimateFadeInDown delay={2}>
+    <AnimateFadeInDown>
       <TitleBar text="Posts" />
       <Separator />
       <WindowPane>

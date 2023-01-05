@@ -18,6 +18,8 @@ import {
 
 import { UnOrderedList, ListItemContent } from "../styles/basics";
 
+import TitleBar from "../components/system.css/TitleBar";
+import Separator from "../components/system.css/Separator";
 import WindowPane from "../components/system.css/WindowPane";
 import AnimateFadeInDown from "../../src/components/animation/AnimateFadeInDown";
 
@@ -42,6 +44,8 @@ interface Props {
 const Social = ({ city, contact }: Props) => {
   return (
     <AnimateFadeInDown delay={1}>
+      <TitleBar text="Social" />
+      <Separator />
       <WindowPane>
         <UnOrderedList>
           <ListItemContent>
