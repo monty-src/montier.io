@@ -22,7 +22,7 @@ interface dPortfolio {
 const PortfolioPane = (props: dPortfolio) => {
   return (
     <>
-      <AnimateFadeInDown delay={1}>
+      <AnimateFadeInDown>
         <TitleBar text="Personal Projects" />
         <Separator />
         <WindowPane>
@@ -48,13 +48,17 @@ const PortfolioPane = (props: dPortfolio) => {
                 </SiteTitle>
               </SiteHeader>
               <SiteBody>
-                <SiteDescription>Monty's Blog</SiteDescription>
+                <SiteDescription>
+                  Monty's Blog
+                  <br />
+                  <strong>You're here now!</strong>
+                </SiteDescription>
               </SiteBody>
             </SiteContainer>
           </Container>
         </WindowPane>
       </AnimateFadeInDown>
-      <AnimateFadeInDown>
+      <AnimateFadeInDown delay={1}>
         <TitleBar text="User Interface Clones" />
         <Separator />
         <WindowPane>
@@ -78,6 +82,28 @@ const PortfolioPane = (props: dPortfolio) => {
           </Container>
         </WindowPane>
       </AnimateFadeInDown>
+      <AnimateFadeInDown delay={2}>
+        <TitleBar text="Templates" />
+        <Separator />
+        <WindowPane>
+          <Container>
+            <SiteContainer>
+              <SiteHeader>
+                <SiteTitle>
+                  <a href="https://github.com/monty-src/rollup-typescript-react-boilerplate" target="_blank">
+                    rollup-typescript-react-boilerplate
+                  </a>
+                </SiteTitle>
+              </SiteHeader>
+              <SiteBody>
+                <SiteDescription>
+                  Typescript, React, Rollup Boilerplate
+                </SiteDescription>
+              </SiteBody>
+            </SiteContainer>
+          </Container>
+        </WindowPane>
+      </AnimateFadeInDown>
     </>
   );
 };
@@ -86,6 +112,9 @@ const Container = styled("section")`
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 768px) {
+    grid-template-columns: none;
+  }
 `;
 
 const SiteContainer = styled("div")`
@@ -116,6 +145,7 @@ const SiteHeader = styled("div")`
   align-items: center;
   justify-content: center;
 `;
+
 const SiteBody = styled("div")`
   height: 90px;
   display: flex;
