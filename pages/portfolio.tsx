@@ -14,8 +14,12 @@ import PortfolioPane from "../src/containers/PortfolioPane";
 
 import "animate.css";
 
-// portfolio
-interface iPortfolio {
+/**
+ * iPortFolio
+ *
+ *
+ */
+export interface iPortfolio {
   id: number;
   attributes: {
     createdAt: string;
@@ -28,7 +32,14 @@ interface iPortfolio {
   };
 }
 
-export type PortfolioProps = iPortfolio[];
+/**
+ * Portfolio Page Props
+ *
+ *
+ */
+export interface PortfolioPageProps {
+  data: iPortfolio[];
+}
 
 /**
  * Portfolio Component
@@ -37,10 +48,9 @@ export type PortfolioProps = iPortfolio[];
  * @param props
  * @returns {}
  */
-const Portfolio: NextPage<PortfolioProps> = ({data}) => {
-  // console.log('props: ', props);
-  return (<PortfolioPane portfolio={data} />)
-};
+const Portfolio: NextPage<PortfolioPageProps> = ({ data }) => (
+  <PortfolioPane portfolio={data} />
+);
 
 /**
  * Get Servier Side Props
@@ -54,8 +64,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
       const response = await axios.get(`${process.env.API_BASE_URL}portfolios`);
 
       const { data } = response?.data;
-
-      console.log('data: ', data);
 
       return {
         props: {

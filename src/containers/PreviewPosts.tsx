@@ -5,7 +5,7 @@
  * @file containers/PreviewPost
  * @author montier@blackinfrastructure.com
  */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { AlignTextBoth, NotebookAndPen, Formula } from "@icon-park/react";
@@ -39,8 +39,9 @@ interface Props {
 }
 
 const PreviewPosts = ({ posts }: Props) => {
-  const [currentPage, setCurrentPage] = useState(2);
+  const [currentPage, setCurrentPage] = useState(1);
   const [skipRequest, setSkipRequest] = useState(true);
+  const [combinedPosts, setCombinedPosts] = useState(posts);
 
   const { data, isLoading, isSuccess } = useGetPostsQuery(
     {
@@ -52,7 +53,13 @@ const PreviewPosts = ({ posts }: Props) => {
     }
   );
 
-  console.log(data);
+  useEffect(() => {
+    setCombinedPosts([
+      ...new Set<Post>(
+        combinedPosts.concat(data?.posts !== undefined ? data?.posts : [])
+      ),
+    ]);
+  }, [data]);
 
   return (
     <AnimateFadeInDown>
@@ -62,36 +69,33 @@ const PreviewPosts = ({ posts }: Props) => {
         <UnOrderedList>
           <ListItemContent>
             <DocumentFolder theme="outline" size="20" fill="#333" />
-            <Link href="/portfolio">Montier's Portfolio</Link>
+            <Link href="/portfolio">Montier's Porfolio</Link>
           </ListItemContent>
-          {posts.map(({ attributes }, idx) => (
+          {combinedPosts.map(({ attributes }, idx) => (
             <ListItemContent key={idx}>
               <a href="">
                 <span>Post: </span> {attributes.title}
               </a>
             </ListItemContent>
           ))}
-          {isSuccess &&
-            data.posts.map(({ attributes }, idx) => (
-              <ListItemContent key={idx}>
-                <a href="">
-                  <span>Post: </span> {attributes.title}
-                </a>
-              </ListItemContent>
-            ))}
           <MoreContent>
             {isLoading ? (
               <AnimateLoadingPosts />
             ) : (
-              <a
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSkipRequest(false);
-                }}
-              >
-                More Posts
-              </a>
+              (data?.meta?.pagination?.page <
+                data?.meta?.pagination?.pageCount ||
+                data === undefined) && (
+                <a
+                  href=""
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSkipRequest(false);
+                    setCurrentPage(currentPage + 1);
+                  }}
+                >
+                  More Posts
+                </a>
+              )
             )}
           </MoreContent>
         </UnOrderedList>

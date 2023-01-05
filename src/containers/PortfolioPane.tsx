@@ -6,7 +6,6 @@
  * @author montier@blackinfrastructure.com
  */
 import React, { useState } from "react";
-import Link from "next/link";
 import styled from "styled-components";
 
 import TitleBar from "../components/system.css/TitleBar";
@@ -14,14 +13,13 @@ import Separator from "../components/system.css/Separator";
 import WindowPane from "../components/system.css/WindowPane";
 import AnimateFadeInDown from "../components/animation/AnimateFadeInDown";
 
-import type { PortfolioProps } from "../../pages/portfolio";
+import type { iPortfolio } from "../../pages/portfolio";
 
-interface iPortfolio {
-  portfolio: PortfolioProps;
+interface dPortfolio {
+  portfolio: iPortfolio[];
 }
 
-const PortfolioPane = (props: iPortfolio) => {
-  console.log("props: ", props.portfolio);
+const PortfolioPane = (props: dPortfolio) => {
   return (
     <>
       <AnimateFadeInDown delay={1}>
